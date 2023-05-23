@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LP 10 YAYA Report Portal</title>
+    <link rel="stylesheet" href="styles.css">
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="css/bootstrap.css" />
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="shortcut icon" href="Images/rccg logo.png" type="image/x-icon">
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="logos">
+            <img src="Images/yaya logo.png" alt="YAYA Logo">
+        </div>
+        <h1 class="heading">Welcome to Lagos Province 10 YAYA Report Portal for Youth Super Sunday</h1>
+
+        
+        
+
+        <form action="" id="reportForm">
+            <div class="sideBar">
+                <p>Contact us:</p>
+                <ul>
+                    <li>Email address: lp10yayaportal@gmail.com</li>
+                    <li>Phone number: 08183221437, 08032054382</li>
+                </ul>
+            
+            </div>
+            <div class="selectBox">
+                <div class="allZones">
+                    <h4>Select your zone</h4>
+                    <select name="zone" id="zone" required> 
+                        <option selected value="Amazing Grace">Amazing Grace</option>
+                    <option value="Bethel">Bethel</option>
+                    <option value="Celebration">Celebration</option>
+                    <option value="Excellence">Excellence</option>
+                    <option value="Light House">Light House</option>
+                    <option value="Livingstone">Livingstone</option>
+                    <option value="Garden of Love">Garden of Love</option>
+                    <option value="Peace Sanctuary">Peace Sanctuary</option>
+                    <option value="Solid Rock">Solid Rock</option>
+                    <option value="Sunshine">Sunshine</option>
+                    <option value="Victory Arena">Victory Arena</option>
+                    <option value="Wonderland">Wonderland</option>
+                    
+                    </select>
+                    
+    
+                </div>
+    
+                <div class="areasBox">
+                    <h4>Select your area</h4>
+                    <select name="areas" id="areas" required>
+                        <option value="Adonai">Adonai</option>
+                        <option value="Mighty Favour">Mighty Favour</option>
+                        <option value="Amazing Grace">Amazing Grace</option>
+    
+                    </select>
+                </div>
+    
+                
+            </div>
+            <div class="reportData" id="reportData">
+                
+                <input type="text" name="parish" id="parish" placeholder="Enter parish name" required>
+                
+                <div class="attendance">
+                    <p>Attendance</p>
+                    <input type="number" placeholder="Men" id="men">
+                <input type="number" placeholder="Women" id="women">
+                <input type="number" placeholder="Children" id="children">
+                </div>
+                <p id="totalAttendance"></p>
+                <input type="number" name="offering" id="offering" required placeholder="Enter total offering">
+                <input type="button" value="Click to see amount to remit" onclick="calculateAnswer()">
+                
+                <p id="result"></p>
+
+
+            </div>
+
+            
+            
+        </form>
+        <input type="button" value="Submit report" id="submitBtn">
+
+        <footer> &copy; 2023. Developed by The Rock Digital. </footer>
+
+
+    </div>
+
+    <script src="index.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script
+      type="text/javascript"
+      src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"
+    ></script>
+</body>
+</html>
