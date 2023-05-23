@@ -80,6 +80,10 @@ body {
     padding: 10px 15px;
     text-align: center;
 }
+.reportData {
+    margin-top: 10px;
+    display: none;
+}
 
 @media (max-width: 568px) {
     #reportForm {
