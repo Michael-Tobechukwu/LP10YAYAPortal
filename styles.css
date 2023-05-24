@@ -1,3 +1,7 @@
+* {
+    font-family: 'Poppins', sans-serif;
+}
+
 body {
     width: 100%;
 
@@ -5,28 +9,54 @@ body {
 
 .container-fluid {
     padding: 5px !important;
-    background-color: grey;
+    background-color: #B6D0E2;
     margin: 0 auto;
     width: 100% !important;
 }
 
+h1, h4 {
+    color:#00008B;
+}
+
+input, select, button, textarea {
+    border-radius: 5px;
+    border: none;
+    padding: 5px 10px;
+}
+
+hr {
+    border: 4px solid #7a7e80;
+}
+
+.calculateBtn, #newParishBtn {
+    background: #00008B;
+    color: #fff;
+    padding: 10px 15px;
+}
+
+#newParishBtn {
+    margin-top: 10px;
+}
+
 .logos {
     margin: 0 auto;
-    text-align: center;
-    width: 100%;
+    width: 98%;
 }
 
 .logos img {
-    width: 15%;
+    width: 20%;
+}
+
+.logos h1 {
+    color: #00008B;
 }
     
 .heading {
     font-size: 20px;
-    text-align: center;
+    margin-top: 10px;
 }
 
-
-#reportForm {
+#formContent {
     display: flex;
     flex-wrap: wrap;
     margin-top: 20px;
@@ -35,21 +65,32 @@ body {
 }
 
 .sideBar {
-    background: #000;
+    background: #000080;
     color: #fff;
-    padding: 10px;
+    padding: 7px;
     margin-right: 10px;
     margin-left: 0;
     width: 20%;
+    border-radius: 5px;
+    font-size: 16px;
+}
 
+.sideBar ul {
+    margin-left: -30px;
+}
+
+.sideBar ul li {
+    list-style: none;
 }
 
 .selectBox {
     width: 35%;
+    margin-top: 20px;
 }
 
 .allZones h4 {
     margin: 0 auto 5px auto;
+    font-weight: bold;
 }
 
 .allZones #zone {
@@ -64,13 +105,46 @@ body {
 }
 
 .areasBox h4 {
-    margin: 0 auto 5px auto;
+    margin: 0 auto;
+    font-weight: bold;
+}
+
+.areasBox p { 
+    font-size: 13px;
 }
 
 .areasBox #areas {
     width: 70%;
     padding: 5px;
     font-size: 14px;
+}
+
+.attendance p {
+    font-weight: 600;
+    font-size: 20px;
+}
+
+#offering {
+    margin-bottom: 5px;
+    
+}
+
+.reportData {
+    margin-top: 10px;
+    display: none;
+}
+
+.reportData h5 {
+    margin: 15px 0 5px 0;
+    font-size: 16px;
+
+}
+
+.newParish {
+    margin: 5px 0;
+    padding: 5px;
+    border: none;
+    border-radius: 5px;
 }
 
 #submitBtn {
@@ -80,23 +154,28 @@ body {
     padding: 10px 15px;
     text-align: center;
 }
-.reportData {
-    margin-top: 10px;
-    display: none;
-}
 
 @media (max-width: 568px) {
-    #reportForm {
+    .logos {
+        display: flex;
+        flex-direction: column;
+    }
+
+ .logos img  {
+    width: 40%;
+
+    }
+
+    #formContent {
     flex-direction: column;
     padding: 5px;
     }
 
     .sideBar {
-        background: #000;
-        color: #fff;
         margin: 0 auto;
         width: 100%;  
         margin-bottom: 10px;  
+        font-size: 14px;
     }
 
     .selectBox {
@@ -115,10 +194,14 @@ body {
         font-size: 14px;
     }
 
+    .areasBox {
+        margin-top: 20px;
+    }
+
     .heading {
-        font-size: 16px;
-        width: 90%;
-        margin: 0 auto;
+        font-size: 25px;
+        width: 100%;
+        font-weight: bold;
     }
 
     .reportData {
@@ -129,7 +212,14 @@ body {
     .reportData input {
         width: 100%;
         padding: 5px;
-        font-size: 13px;;
+        font-size: 13px;
+        border-radius: 5px;
+        border: none;
+    }
+
+    .attendance {
+        width: 100%;
+        padding: 0;
     }
 
     .attendance p {
@@ -139,12 +229,21 @@ body {
 
     .attendance input {
         width: 32%;
-        
+        font-size: 13px;
     }
+
+    #commentService {
+        width: 100%;
+        border-radius: 5px;
+        padding: 5px;
+        font-size: 13px;
+    }
+
+    #submitBtn
 
     footer {
         margin: 10px auto 0 auto;
-        font-size: 11px;;
+        font-size: 11px;
     }
 
     
