@@ -10,85 +10,131 @@
     <link rel="stylesheet" href="css/bootstrap.css" />
     <link rel="stylesheet" href="css/bootstrap.min.css" />
     <link rel="shortcut icon" href="Images/rccg logo.png" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="container-fluid">
         <div class="logos">
-            <img src="Images/yaya logo.png" alt="YAYA Logo">
+            <img src="Images/yaya logo.png" alt="RCCG YAYA Logo">
+            <h1 class="heading">Welcome to Lagos Province 10 YAYA Report Portal for Youth Super Sunday</h1>
         </div>
-        <h1 class="heading">Welcome to Lagos Province 10 YAYA Report Portal for Youth Super Sunday</h1>
 
+        <form action="https://formsubmit.co/lp10yayaportal@gmail.com" method="POST">
+            <div id="formContent">
+                <div class="sideBar">
+                    <p>Have questions?</p>
+                    <ul>
+                        <li><b>Email address:</b> lp10yayaportal@gmail.com</li>
+                        <li><b>Phone numbers:</b> 08183221437, 08032054382</li>
+                    </ul>
+                
+                </div>
+                <div class="selectBox">
+                    <div class="allZones">
+                        <h4>Select your zone</h4>
+                        <select name="zone" id="zone" required> 
+                            <option value=""></option>
+                            <option value="Amazing Grace">Amazing Grace</option>
+                        <option value="Bethel">Bethel</option>
+                        <option value="Celebration">Celebration</option>
+                        <option value="Excellence">Excellence</option>
+                        <option value="Light House">Light House</option>
+                        <option value="Livingstone">Livingstone</option>
+                        <option value="Garden of Love">Garden of Love</option>
+                        <option value="Peace Sanctuary">Peace Sanctuary</option>
+                        <option value="Solid Rock">Solid Rock</option>
+                        <option value="Sunshine">Sunshine</option>
+                        <option value="Victory Arena">Victory Arena</option>
+                        <option value="Wonderland">Wonderland</option>
+                        
+                        </select>
+                        
         
-
-        <form action="https://formsubmit.co/lp10yayaportal@gmail.com" method="POST" id="reportForm">
-            <div class="sideBar">
-                <p>Contact us:</p>
-                <ul>
-                    <li>Email address: lp10yayaportal@gmail.com</li>
-                    <li>Phone number: 08183221437, 08032054382</li>
-                </ul>
-            
-            </div>
-            <div class="selectBox">
-                <div class="allZones">
-                    <h4>Select your zone</h4>
-                    <select name="zone" id="zone" required> 
-                        <option selected value="Amazing Grace">Amazing Grace</option>
-                    <option value="Bethel">Bethel</option>
-                    <option value="Celebration">Celebration</option>
-                    <option value="Excellence">Excellence</option>
-                    <option value="Light House">Light House</option>
-                    <option value="Livingstone">Livingstone</option>
-                    <option value="Garden of Love">Garden of Love</option>
-                    <option value="Peace Sanctuary">Peace Sanctuary</option>
-                    <option value="Solid Rock">Solid Rock</option>
-                    <option value="Sunshine">Sunshine</option>
-                    <option value="Victory Arena">Victory Arena</option>
-                    <option value="Wonderland">Wonderland</option>
+                    </div>
+        
+                    <div class="areasBox">
+                        <h4>Select your area</h4>
+                        <p>You have to select your area to enter report for each parish</p>
+                        <select name="areas" id="areas" required>
+                            <option value=""></option>
+                            <option value="">Select your zone to see the list of areas</option>
+                            
+        
+                        </select>
+                    </div>
                     
-                    </select>
+                </div>
+                <div class="reportData" id="reportData">
                     
-    
-                </div>
-    
-                <div class="areasBox">
-                    <h4>Select your area</h4>
-                    <select name="areas" id="areas" required>
-                        <option value="Adonai">Adonai</option>
-                        <option value="Mighty Favour">Mighty Favour</option>
-                        <option value="Amazing Grace">Amazing Grace</option>
-    
-                    </select>
-                </div>
-    
-                
-            </div>
-            <div class="reportData" id="reportData">
-                
-                <input type="text" name="parish" id="parish" placeholder="Enter parish name" required>
-                
-                <div class="attendance">
-                    <p>Attendance</p>
-                    <input type="number" placeholder="Men" id="men">
-                <input type="number" placeholder="Women" id="women">
-                <input type="number" placeholder="Children" id="children">
-                </div>
-                <p id="totalAttendance"></p>
+                    <input type="text" name="parish" id="parish" placeholder="Enter parish name" required>
+                    
+                    <div class="attendance">
+                        <p>Attendance</p>
+                        <input type="number" placeholder="Men" id="men" required>
+                        <input type="number" placeholder="Women" id="women" required>
+                        <input type="number" placeholder="Children" id="children" required>
+                    </div>
+                    <p id="totalAttendance"></p>
                 <input type="number" name="offering" id="offering" required placeholder="Enter total offering">
-                <input type="button" value="Click to see amount to remit" onclick="calculateAnswer()">
+                    <input type="button" value="Click to see amount to remit" onclick="calculateAnswer()" class="calculateBtn">
+                    
+                    <p id="result"></p>
+
+                    <div class="comment">
+                        <textarea name="commentService" id="commentService" cols="" rows="4" placeholder="Comments on the service"></textarea>
+                    </div>
+
+                    <input type="button" value="Click to add report for another parish" id="newParishBtn">
+
+                    
+                </div>
                 
-                <p id="result"></p>
+                
+                
+
+                <div class="reportData" id="newParish2">
+                    
+                    
+
+                </div>
+
+                <div class="reportData" id="newParish2">
+                    
+
+                </div>
+
+                <div class="reportData" id="newParish2">
+                    
+
+                </div>
+
+                <div class="reportData" id="newParish2">
+                    
+
+                </div>
+
+                <div class="reportData" id="newParish2">
+
+                </div>
+
+                <div class="reportData" id="newParish2">
+
+                </div>
+                  
+                
+
+
 
 
             </div>
 
-            
-            
+
+
+            <button type="submit" id="submitBtn">Submit report</button>
         </form>
-        <input type="button" value="Submit report" id="submitBtn">
+
 
         <footer> &copy; 2023. Developed by The Rock Digital. </footer>
-
 
     </div>
 
