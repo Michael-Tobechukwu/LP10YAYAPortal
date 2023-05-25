@@ -1,63 +1,148 @@
-  // Get references to the select elements
-  var zoneSelect = document.getElementById("zone");
-  var areasSelect = document.getElementById("areas");
+async function selectZone() {
+  const endpoint = 'https://test.fintecgrate.com/api/zones';
+  const zoneDropdown = document.getElementById('zonesList');
 
-  // Add event listener to the zone select
-  zoneSelect.addEventListener("change", function() {
-    // Clear previous options
-    areasSelect.innerHTML = "";
+  const requestOptions = {
+    method: 'GET',
+    redirect: 'follow'
+  };
 
-    // Get the selected value from the zone select
-    var selectedOption = zoneSelect.value;
+  try {
+    const response = await fetch(endpoint, requestOptions);
 
-    // Populate the areas select based on the selected option
-    if (selectedOption === "Amazing Grace") {
-      populateOptions(["","Adonai", "Mighty Favour", "Amazing Grace"]);
-    } else if (selectedOption === ""){
-      populateOptions(["Select your zone to see the list of areas",])
+    if (!response.ok) {
+      throw new Error('HTTP error ' + response.status);
     }
-    else if (selectedOption === "Bethel") {
-      populateOptions(["","Bethel Area 1", "Bethel Area 2" ]);
-    } else if (selectedOption === "Celebration") {
-      populateOptions(["","Celebration Area 1", "Celebration Option 2", "Celebration Area 3"]);
-    } else if (selectedOption === "Excellence") {
-      populateOptions(["","Excellence Area 1", "Excellence Area 2", "Excellence Area 3"]);
-    } else if (selectedOption === "Light House") {
-      populateOptions(["","Light House Area 1", "Light House Area 2"]);
-    } else if (selectedOption === "Livingstone") {
-      populateOptions(["","Livingstone Area 1", "Livingstone Area 2", "Livingstone Area 3"]);
-    } else if (selectedOption === "Garden of Love") {
-      populateOptions(["","Garden of Love Area 1", "Garden of Love Area 2"]);
-    } else if (selectedOption === "Peace Sanctuary") {
-      populateOptions(["","Peace Sanctuary Parish"]);
-    } else if (selectedOption === "Solid Rock") {
-      populateOptions(["","Solid Rock Area 1", "Solid Rock Area 2", "Solid Rock Area 3"]);
-    } else if (selectedOption === "Sunshine") {
-      populateOptions(["","Sunshine Area 1", "Sunshine Area 2"]);
-    } else if (selectedOption === "Victory Arena") {
-      populateOptions(["","Victory Arena Area 1", "Victory Arena Area 2", "Victory Arena Area 3"]);
-    } else if (selectedOption === "Wonderland") {
-      populateOptions(["","Wonderland Area 1", "Wonderland Option 2", "Wonderland Area 3", "Wonderland Area 4"]);
-    }
-    
-  });
 
-  // Function to populate the areas select with options
-  function populateOptions(options) {
-    options.forEach(function(option) {
-      var newOption = document.createElement("option");
-      newOption.text = option;
-      areasSelect.add(newOption);
-    });
+    const data = await response.json();
+
+    // Clear existing options
+    zoneDropdown.innerHTML = '';
+
+    if (Array.isArray(data.zones)) {
+      if (data.zones.length > 0) {
+        // Iterate over the zones and create options
+        data.zones.forEach((zone) => {
+          const option = document.createElement('option');
+          option.value = zone;
+          option.textContent = zone;
+          zoneDropdown.appendChild(option);
+        });
+      } else {
+        console.warn('No zones available');
+        // Alternatively, display a message to the user
+      }
+    } else {
+      console.error('Invalid data format:', data);
+    }
+  } catch (error) {
+    console.error('Error:', error);
+  }
+}
+
+window.onload = selectZone;
+
+//Select area
+async function selectArea(zone) {
+    const endpoint = `https://test.fintecgrate.com/api/areas?zone=${zone}`;
+    const areasListDropdown = document.getElementById('areasList');
+
+  const requestOptions = {
+    method: 'GET',
+    redirect: 'follow'
+  };
+
+  try {
+    const response = await fetch(endpoint, requestOptions);
+
+    if (!response.ok) {
+      throw new Error('HTTP error ' + response.status);
+    }
+
+    const data = await response.json();
+
+    // Clear existing options
+    areasListDropdown.innerHTML = '';
+
+    if (Array.isArray(data.areas)) {
+      if (data.areas.length > 0) {
+        // Iterate over the zones and create options
+        data.areas.forEach((area) => {
+          const option = document.createElement('option');
+          option.value = area;
+          option.textContent = area;
+          areasListDropdown.appendChild(option);
+        });
+      } else {
+        console.warn('No areas available');
+        // Alternatively, display a message to the user
+      }
+    } else {
+      console.error('Invalid data format:', data);
+    }
+  } catch (error) {
+    console.error('Error:', error);
+  }
+}
+
+const zoneDropdown = document.getElementById('zonesList');
+
+zoneDropdown.addEventListener('change', function() {
+  const selectedZone = zoneDropdown.value;
+  selectArea(selectedZone);
+});
+//------
+
+//Select parish under area
+async function selectParish(area) {
+  const endpoint = `https://test.fintecgrate.com/api/parishes?area=${area}`;
+  const parishesListDropdown = document.getElementById('parishesList');
+
+const requestOptions = {
+  method: 'GET',
+  redirect: 'follow'
+};
+
+try {
+  const response = await fetch(endpoint, requestOptions);
+
+  if (!response.ok) {
+    throw new Error('HTTP error ' + response.status);
   }
 
-  const reportData = document.getElementById('reportData');
+  const data = await response.json();
 
-  function showReportData (){
-    reportData.style.display = 'block';
+  // Clear existing options
+  parishesList.innerHTML = '';
+
+  if (Array.isArray(data.parishes)) {
+    if (data.parishes.length > 0) {
+      // Iterate over the zones and create options
+      data.parishes.forEach((parish) => {
+        const option = document.createElement('option');
+        option.value = parish;
+        option.textContent = parish;
+        parishesList.appendChild(option);
+      });
+    } else {
+      console.warn('No parishes available');
+      // Alternatively, display a message to the user
+    }
+  } else {
+    console.error('Invalid data format:', data);
   }
+} catch (error) {
+  console.error('Error:', error);
+}
+}
 
-  areasSelect.addEventListener('change', showReportData)
+const areasListDropdown = document.getElementById('areasList');
+
+areasListDropdown.addEventListener('change', function() {
+const selectedArea = areasListDropdown.value;
+selectParish(selectedArea);
+});
+//-------
 
 //Calculate amount to remit
   function calculateAnswer() {
@@ -74,7 +159,6 @@
   }
 
   //Add up all attendance inputs
-
   var menInput = document.getElementById("men");
   var womenInput = document.getElementById("women");
   var childrenInput = document.getElementById("children");
@@ -97,7 +181,29 @@
     resultElement.textContent = "Total Attendance: " + sum;
   }
 
+//If remittance made, upload receipt
+function receiptUpload() {
+  const selectedRadioButton = document.querySelector('input[name="paymentResponse"]:checked');
 
+  // If the selected radio button is "Yes", show the upload file input.
+  if (selectedRadioButton.id === 'yes') {
+    document.querySelector('#receiptUpload').style.display = 'block';
+  } else {
+    document.querySelector('#receiptUpload').style.display = 'none';
+  }
+}
+
+const reportData = document.getElementById('reportData');
+const parishSelect = document.getElementById('parishesList');
+
+  function showReportData (){
+    reportData.style.display = 'block';
+  }
+
+  parishSelect.addEventListener('change', showReportData)
+
+
+  /*
 //Show form for second parish
 const parishData2 = document.getElementById('newParish2');
 const newParishBtn = document.getElementById('newParishBtn');
@@ -122,11 +228,10 @@ function showParishData2() {
 <div class="comment">
   <textarea name="commentService" id="commentService" cols="" rows="4" placeholder="Comments on the service"></textarea>
 </div>
-<input type="button" value="Click to add report for another parish" id="newParishBtn">
-
-
-`
+<input type="button" value="Click to add report for another parish" id="newParishBtn">`
 }
 
 newParishBtn.addEventListener('click', showParishData2)
 
+
+  */
