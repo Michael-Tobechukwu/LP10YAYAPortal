@@ -19,7 +19,7 @@
             <h1 class="heading">Welcome to Lagos Province 10 YAYA Report Portal for Youth Super Sunday</h1>
         </div>
 
-        <form action="https://formsubmit.co/lp10yayaportal@gmail.com" method="POST">
+        <form action="" method="POST">
             <div id="formContent">
                 <div class="sideBar">
                     <p>Have questions?</p>
@@ -32,21 +32,8 @@
                 <div class="selectBox">
                     <div class="allZones">
                         <h4>Select your zone</h4>
-                        <select name="zone" id="zone" required> 
-                            <option value="">Select your zone to start</option>
-                            <option value="Amazing Grace">Amazing Grace</option>
-                        <option value="Bethel">Bethel</option>
-                        <option value="Celebration">Celebration</option>
-                        <option value="Excellence">Excellence</option>
-                        <option value="Light House">Light House</option>
-                        <option value="Livingstone">Livingstone</option>
-                        <option value="Garden of Love">Garden of Love</option>
-                        <option value="Peace Sanctuary">Peace Sanctuary</option>
-                        <option value="Solid Rock">Solid Rock</option>
-                        <option value="Sunshine">Sunshine</option>
-                        <option value="Victory Arena">Victory Arena</option>
-                        <option value="Wonderland">Wonderland</option>
-                        
+                        <p>Select your zone to begin</p>
+                        <select name="zone" id="zonesList" required>                         
                         </select>
                         
         
@@ -54,19 +41,21 @@
         
                     <div class="areasBox">
                         <h4>Select your area</h4>
-                        <p>You have to select your area to enter report for each parish</p>
-                        <select name="areas" id="areas" required>
-                            <option value=""></option>
-                            <option value="">Select your zone to see the list of areas</option>
-                            
+                        <p>Now, select your area</p>
+                        <select name="areas" id="areasList" required>
         
                         </select>
+                    </div>
+
+                    <div class="parishesBox">
+                        <h4>Select your parish</h4>
+                        <p>You have to select the parish to enter report</p>
+                        <select name="parishes" id="parishesList" required>
+                         </select>
                     </div>
                     
                 </div>
                 <div class="reportData" id="reportData">
-                    
-                    <input type="text" name="parish" id="parish" placeholder="Enter parish name" required>
                     
                     <div class="attendance">
                         <p>Attendance</p>
@@ -84,7 +73,30 @@
                         <textarea name="commentService" id="commentService" cols="" rows="4" placeholder="Comments on the service"></textarea>
                     </div>
 
-                    <input type="button" value="Click to add report for another parish" id="newParishBtn">
+                    <div class="paymentReceipt">
+                        <p>Have you remitted the offering into the Province Youth account?</p>
+        
+                        <div class="receiptInput">
+                            <div class="yes">
+                                <label for="yes">Yes</label>
+                                <input type="radio" name="paymentResponse" id="yes">
+
+                            </div>
+        
+
+                            <div class="no">
+                                <label for="no">No</label>
+                                <input type="radio" name="paymentResponse" id="no">
+                            </div>
+
+                            <label for="receiptUpload">If yes, upload receipt here</label>
+                            <input type="file" id="receiptUpload">
+                            <label for="receiptUpload">If yes, upload receipt here</label>
+                        </div>
+                    </div>
+                    <button type="submit" id="submitBtn">Submit report for this parish</button>
+
+                    <!--<input type="button" value="Click to add report for another parish" id="newParishBtn">-->
 
                     
                 </div>
@@ -120,21 +132,14 @@
                 <div class="reportData" id="newParish2">
 
                 </div>
-                  
-                
-
-
-
 
             </div>
 
-
-
-            <button type="submit" id="submitBtn">Submit report</button>
+          
         </form>
 
 
-        <footer> &copy; 2023. Developed by The Rock Digital. </footer>
+        <footer> &copy; 2023. Developed by <a href="https://linktr.ee/mywebdesignworks" target="_blank">The Rock Digital.</a>  </footer>
 
     </div>
 
