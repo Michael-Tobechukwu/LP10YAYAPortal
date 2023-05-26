@@ -243,7 +243,7 @@ const parishSelect = document.getElementById('parishesList');
     };
   
     // Send POST request
-    fetch('https://test.fintecgrate.com/api/reports', {
+    fetch(`https://test.fintecgrate.com/api/reports`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
