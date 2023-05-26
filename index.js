@@ -268,7 +268,7 @@ function submitThisReport() {
         homeButton.innerHTML = 'Enter report for another parish';
         homeButton.addEventListener('click', function() {
           // Redirect logic goes here
-          window.location.href = 'http://127.0.0.1:5500/index.html'; 
+          window.location.href = 'https://lp-10-yaya-portal.vercel.app'; 
         });
         reportDataElement.appendChild(homeButton);
       })
