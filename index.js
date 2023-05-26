@@ -3,7 +3,6 @@
 var currentMonth = moment().format('MMMM YYYY');
 document.getElementById("currentMonth").innerHTML = currentMonth;
 
-
 //Select zone
 async function selectZone() {
   const endpoint = 'https://test.fintecgrate.com/api/zones';
@@ -225,51 +224,56 @@ const parishSelect = document.getElementById('parishesList');
   }
 
   parishSelect.addEventListener('change', showReportData)
+//-------
 
-  //Submit report to server
-  function submitThisReport() {
+//Submit report to server
+function submitThisReport() {
     // Get form data
     var formData = {
       zone: document.getElementById('zonesList').value,
       area: document.getElementById('areasList').value,
-      parish: document.getElementById('parishesList').value,
-      men: document.getElementById('men').value,
-      women: document.getElementById('women').value,
-      children: document.getElementById('children').value,
-      offering: document.getElementById('offering').value,
-      commentService: document.getElementById('commentService').value,
-      paymentResponse: document.querySelector('input[name="paymentResponse"]:checked').id,
-      receiptUpload: document.getElementById('receiptUpload').value,
+      men: parseInt(document.getElementById('men').value),
+      women: parseInt(document.getElementById('women').value),
+      children: parseInt(document.getElementById('children').value),
+      total_offering: parseInt(document.getElementById('offering').value),
+      remittance: 0, // Set the initial remittance value to 0
+      comment: document.getElementById('commentService').value,
+    };
+  
+    // Configure request options
+    var myHeaders = new Headers();
+    myHeaders.append('Accept', 'application/json');
+    myHeaders.append('Content-Type', 'application/json');
+  
+    var requestOptions = {
+      method: 'POST',
+      headers: myHeaders,
+      body: JSON.stringify(formData),
+      redirect: 'follow',
     };
   
     // Send POST request
-    fetch(`https://test.fintecgrate.com/api/reports`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(formData),
-    })
+    fetch('https://test.fintecgrate.com/api/reports', requestOptions)
       .then(response => response.json())
       .then(data => {
         // Handle the API response
         console.log('Response:', data);
-        
+  
         // Update UI with success message
         var reportDataElement = document.getElementById('reportData');
-        reportDataElement.innerHTML = '<p>Your report has been successfully submitted for this parish</p>';
+        reportDataElement.innerHTML = '<p>Report successfully submitted for this parish.</p>';
   
         // Add button to redirect to home page
-       var homeButton = document.createElement('button');
-        homeButton.innerHTML = 'Click to enter report for another parish';
+        var homeButton = document.createElement('button');
+        homeButton.innerHTML = 'Enter report for another parish';
         homeButton.addEventListener('click', function() {
           // Redirect logic goes here
-         window.location.href = `https://lp-10-yaya-portal.vercel.app`;
+          window.location.href = 'http://127.0.0.1:5500/index.html'; 
         });
         reportDataElement.appendChild(homeButton);
       })
       .catch(error => {
-       
+        // Handle any errors
         console.error('Error:', error);
       });
   }
