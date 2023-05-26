@@ -18,6 +18,11 @@ async function selectZone() {
 
     // Clear existing options
     zoneDropdown.innerHTML = '';
+    // Add an empty option
+    const emptyOption = document.createElement('option');
+    emptyOption.value = '';
+    emptyOption.textContent = '';
+    zoneDropdown.appendChild(emptyOption);
 
     if (Array.isArray(data.zones)) {
       if (data.zones.length > 0) {
@@ -63,6 +68,11 @@ async function selectArea(zone) {
 
     // Clear existing options
     areasListDropdown.innerHTML = '';
+     // Add an empty option
+     const emptyOption = document.createElement('option');
+     emptyOption.value = '';
+     emptyOption.textContent = '';
+     areasListDropdown.appendChild(emptyOption);
 
     if (Array.isArray(data.areas)) {
       if (data.areas.length > 0) {
@@ -114,7 +124,12 @@ try {
 
   // Clear existing options
   parishesList.innerHTML = '';
-
+  // Add an empty option
+  const emptyOption = document.createElement('option');
+  emptyOption.value = '';
+  emptyOption.textContent = '';
+  parishesList.appendChild(emptyOption);
+  
   if (Array.isArray(data.parishes)) {
     if (data.parishes.length > 0) {
       // Iterate over the zones and create options
