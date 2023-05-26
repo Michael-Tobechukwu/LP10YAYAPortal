@@ -11,6 +11,14 @@
     <link rel="stylesheet" href="css/bootstrap.min.css" />
     <link rel="shortcut icon" href="Images/rccg logo.png" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <script
+      type="text/JavaScript"
+      src=" https://MomentJS.com/downloads/moment.js"
+    ></script>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"
+    />
+
 </head>
 <body>
     <div class="container-fluid">
@@ -29,6 +37,8 @@
                     </ul>
                 
                 </div>
+
+                <p id="topMessage">Youth Super Sunday Report for <span id="currentMonth"></span></p>
                 <div class="selectBox">
                     <div class="allZones">
                         <h4>Select your zone</h4>
@@ -89,9 +99,11 @@
                                 <input type="radio" name="paymentResponse" id="no">
                             </div>
 
+                           <div class="receiptUpload">
                             <label for="receiptUpload">If yes, upload receipt here</label>
                             <input type="file" id="receiptUpload">
-                            <label for="receiptUpload">If yes, upload receipt here</label>
+                           </div>
+                            
                         </div>
                     </div>
                     <button type="submit" id="submitBtn">Submit report for this parish</button>
