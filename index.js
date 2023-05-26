@@ -226,6 +226,7 @@ const parishSelect = document.getElementById('parishesList');
 
   parishSelect.addEventListener('change', showReportData)
 
+  //Submit report to server
   function submitThisReport() {
     // Get form data
     var formData = {
@@ -259,11 +260,11 @@ const parishSelect = document.getElementById('parishesList');
         reportDataElement.innerHTML = '<p>Your report has been successfully submitted for this parish</p>';
   
         // Add button to redirect to home page
-        var homeButton = document.createElement('button');
+       var homeButton = document.createElement('button');
         homeButton.innerHTML = 'Click to enter report for another parish';
         homeButton.addEventListener('click', function() {
           // Redirect logic goes here
-          window.location.href = 'https://lp-10-yaya-portal.vercel.app/';
+         window.location.href = `https://lp-10-yaya-portal.vercel.app`;
         });
         reportDataElement.appendChild(homeButton);
       })
