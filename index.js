@@ -1,3 +1,10 @@
+
+  //Get current month of report
+var currentMonth = moment().format('MMMM YYYY');
+document.getElementById("currentMonth").innerHTML = currentMonth;
+
+
+//Select zone
 async function selectZone() {
   const endpoint = 'https://test.fintecgrate.com/api/zones';
   const zoneDropdown = document.getElementById('zonesList');
@@ -46,8 +53,9 @@ async function selectZone() {
 }
 
 window.onload = selectZone;
+//--------
 
-//Select area
+//Select area under area
 async function selectArea(zone) {
     const endpoint = `https://test.fintecgrate.com/api/areas?zone=${zone}`;
     const areasListDropdown = document.getElementById('areasList');
@@ -159,6 +167,7 @@ selectParish(selectedArea);
 });
 //-------
 
+
 //Calculate amount to remit
   function calculateAnswer() {
     // Get the input value
@@ -217,36 +226,54 @@ const parishSelect = document.getElementById('parishesList');
 
   parishSelect.addEventListener('change', showReportData)
 
-
-  /*
-//Show form for second parish
-const parishData2 = document.getElementById('newParish2');
-const newParishBtn = document.getElementById('newParishBtn');
-
-function showParishData2() {
-  parishData2.style.display = 'block';
-  parishData2.innerHTML = `
-  <hr>
-<h5>Parish 2</h5>
-<input type="text" name="parish" id="parish" placeholder="Enter parish name" required>
-<div class="attendance">
-  <p>Attendance</p>
-  <input type="number" placeholder="Men" id="men" required>
-  <input type="number" placeholder="Women" id="women" required>
-  <input type="number" placeholder="Children" id="children" required>
-</div>
-<p id="totalAttendance"></p>
-<input type="number" name="offering" id="offering" required placeholder="Enter total offering">
-<input type="button" value="Click to see amount to remit" onclick="calculateAnswer()" class="calculateBtn">
-<p id="result"></p>
-
-<div class="comment">
-  <textarea name="commentService" id="commentService" cols="" rows="4" placeholder="Comments on the service"></textarea>
-</div>
-<input type="button" value="Click to add report for another parish" id="newParishBtn">`
-}
-
-newParishBtn.addEventListener('click', showParishData2)
-
-
-  */
+  function submitThisReport() {
+    // Get form data
+    var formData = {
+      zone: document.getElementById('zonesList').value,
+      area: document.getElementById('areasList').value,
+      parish: document.getElementById('parishesList').value,
+      men: document.getElementById('men').value,
+      women: document.getElementById('women').value,
+      children: document.getElementById('children').value,
+      offering: document.getElementById('offering').value,
+      commentService: document.getElementById('commentService').value,
+      paymentResponse: document.querySelector('input[name="paymentResponse"]:checked').id,
+      receiptUpload: document.getElementById('receiptUpload').value,
+    };
+  
+    // Send POST request
+    fetch('https://test.fintecgrate.com/api/reports', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(formData),
+    })
+      .then(response => response.json())
+      .then(data => {
+        // Handle the API response
+        console.log('Response:', data);
+        
+        // Update UI with success message
+        var reportDataElement = document.getElementById('reportData');
+        reportDataElement.innerHTML = '<p>Your report has been successfully submitted for this parish</p>';
+  
+        // Add button to redirect to home page
+        var homeButton = document.createElement('button');
+        homeButton.innerHTML = 'Click to enter report for another parish';
+        homeButton.addEventListener('click', function() {
+          // Redirect logic goes here
+          window.location.href = 'https://lp-10-yaya-portal.vercel.app/';
+        });
+        reportDataElement.appendChild(homeButton);
+      })
+      .catch(error => {
+       
+        console.error('Error:', error);
+      });
+  }
+  
+  // Attach event listener to submit button
+  var submitBtn = document.getElementById('submitBtn');
+  submitBtn.addEventListener('click', submitThisReport);
+  
