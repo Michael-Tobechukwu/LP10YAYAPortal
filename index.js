@@ -3,6 +3,7 @@
 var currentMonth = moment().format('MMMM YYYY');
 document.getElementById("currentMonth").innerHTML = currentMonth;
 
+
 //Select zone
 async function selectZone() {
   const endpoint = 'https://test.fintecgrate.com/api/zones';
@@ -264,11 +265,12 @@ function submitThisReport() {
         reportDataElement.innerHTML = '<p>Report successfully submitted for this parish.</p>';
   
         // Add button to redirect to home page
-        var homeButton = document.createElement('button');
-        homeButton.innerHTML = 'Enter report for another parish';
+        var homeButton = document.createElement('input');
+        homeButton.type = 'button';
+        homeButton.value = 'Enter report for another parish';
         homeButton.addEventListener('click', function() {
           // Redirect logic goes here
-          window.location.href = 'https://lp-10-yaya-portal.vercel.app'; 
+          window.location.href = 'https://lp-10-yaya-portal.vercel.app/'; 
         });
         reportDataElement.appendChild(homeButton);
       })
