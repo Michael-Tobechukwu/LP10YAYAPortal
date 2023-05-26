@@ -88,6 +88,11 @@ hr {
     list-style: none;
 }
 
+#topMessage {
+    font-size: 13px;
+    margin-bottom: 0;
+}
+
 .selectBox {
     width: 35%;
     margin-top: 20px;
@@ -181,7 +186,7 @@ hr {
 
 .paymentReceipt {
     margin-top: 15px;
-    display: none;
+
 }
 
 .paymentReceipt p {
@@ -192,14 +197,22 @@ hr {
     margin-top: -10px;
 }
 
-.receiptInput input {
+.receiptInput .yes, .receiptInput .no {
     display: inline-block;
-    width: 30% !important;
+}
+
+.receiptInput input {
+    width: 40% !important;
+
 }
 
 .receiptInput label {
     width: 30%;
-    display: inline-block;
+
+}
+
+.receiptInput .receiptUpload {
+    display: block;
 }
 
 footer {
@@ -289,6 +302,36 @@ footer {
         border-radius: 5px;
         padding: 5px;
         font-size: 13px;
+    }
+
+    .receiptInput {
+        width: 100%;
+        font-size: 13px;
+        
+    }
+
+    .receiptInput .yes, .receiptInput .no {
+        display: flex;
+        width: 37%;
+        align-items: center;
+        justify-content: flex-start;
+    }
+    
+    
+    .receiptInput .yes label {
+        width: 30%;
+    }
+    
+    .receiptInput .receiptUpload {
+        display: block;
+    }
+    
+    .receiptInput .receiptUpload label {
+        width: 100%;
+    }
+
+    .receiptInput .receiptUpload input {
+        width: 100%;
     }
     
 }
