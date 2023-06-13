@@ -4,7 +4,6 @@
 
 body {
     width: 100%;
-
 }
 
 .container-fluid {
@@ -136,11 +135,18 @@ hr {
 .attendance p {
     font-weight: 600;
     font-size: 20px;
+    margin-bottom: -5px;
+}
+
+.attendance #subtext {
+    font-size: 12px;
+    margin-top: -5px;
+    margin-bottom: 15px;
+    font-weight: 400;
 }
 
 #offering {
     margin-bottom: 5px;
-    
 }
 
 .reportData {
@@ -213,6 +219,7 @@ hr {
 
 .receiptInput .receiptUpload {
     display: block;
+    width: 95%;
 }
 
 footer {
