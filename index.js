@@ -1,8 +1,6 @@
-
   //Get current month of report
 var currentMonth = moment().format('MMMM YYYY');
 document.getElementById("currentMonth").innerHTML = currentMonth;
-
 
 //Select zone
 async function selectZone() {
@@ -55,7 +53,7 @@ async function selectZone() {
 window.onload = selectZone;
 //--------
 
-//Select area under area
+//Select area under zone
 async function selectArea(zone) {
     const endpoint = `https://test.fintecgrate.com/api/areas?zone=${zone}`;
     const areasListDropdown = document.getElementById('areasList');
@@ -166,7 +164,16 @@ const selectedArea = areasListDropdown.value;
 selectParish(selectedArea);
 });
 //-------
+//Show report form when area is selected from zone dropdown list
+const reportData = document.getElementById('reportData');
+const parishSelect = document.getElementById('parishesList');
 
+  function showReportData (){
+    reportData.style.display = 'block';
+  }
+
+  areasListDropdown.addEventListener('change', showReportData)
+//-------
 
 //Calculate amount to remit
   function calculateAnswer() {
@@ -179,7 +186,7 @@ selectParish(selectedArea);
 
     // Display the result
     var resultElement = document.getElementById("result");
-    resultElement.textContent = "You are to remit: N" + answer;
+    resultElement.textContent = "You are to remit: ₦" + answer;
   }
 
   //Add up all attendance inputs
@@ -217,16 +224,6 @@ function receiptUpload() {
   }
 }
 
-const reportData = document.getElementById('reportData');
-const parishSelect = document.getElementById('parishesList');
-
-  function showReportData (){
-    reportData.style.display = 'block';
-  }
-
-  parishSelect.addEventListener('change', showReportData)
-//-------
-
 //Submit report to server
 function submitThisReport() {
     // Get form data
@@ -244,7 +241,7 @@ function submitThisReport() {
     // Configure request options
     var myHeaders = new Headers();
     myHeaders.append('Accept', 'application/json');
-    myHeaders.append('Content-Type', 'application/json');
+    myHeaders.append("Content-Type: multipart/form-data");
   
     var requestOptions = {
       method: 'POST',
